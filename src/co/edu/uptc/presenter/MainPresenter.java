@@ -36,7 +36,7 @@ public class MainPresenter implements PresenterInterface {
             }
             
             model.addProduct(description, price, unit);
-            view.showMessage("Producto agregada exitosamente: " + description + " " + price);
+            view.showMessage("Producto agregada exitosamente: " + description + " Precio: " + price + "Unidades" + unit);
             
         } catch (Exception e) {
             view.showError("Error al agregar el producto: " + e.getMessage());
