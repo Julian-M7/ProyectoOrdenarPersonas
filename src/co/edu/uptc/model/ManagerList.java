@@ -1,13 +1,14 @@
 package co.edu.uptc.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ManagerList {
     Node header = null;
-    ArrayList<People> listPeople = new ArrayList();
+    LinkedList<Product> listProduct = new LinkedList<>();
 
-    private Node createNode(String value){
-        return new Node(value);
+    private Node createNode(Product product){
+        return new Node(product);
     }
 
     private Node returnlastNode(){
@@ -17,8 +18,8 @@ public class ManagerList {
         }
         return last;
     }
-    public void addInicio(String value){
-        Node aux = new Node(value);
+    public void addInicio(Product product){
+        Node aux = new Node(product);
         if(header == null){
             header = aux;
         }else{
@@ -26,8 +27,8 @@ public class ManagerList {
         }
     }
 
-    public void conectarNodoAlFinal(String value){
-        Node aux = new Node(value);
+    public void conectarNodoAlFinal(Product product){
+        Node aux = new Node(product);
         if(header == null){
             header = aux;
         }else{
@@ -35,9 +36,9 @@ public class ManagerList {
             last.sig = aux;
         }
     }
-    public void addEnd(String value){
-        Node aux = new Node(value);
-        //conectarNodoAlFinal(value);
+    public void addEnd(Product product){
+        Node aux = new Node(product);
+        //conectarNodoAlFinal(product);
         if(header == null){
             header = aux;
         }else{
@@ -49,28 +50,28 @@ public class ManagerList {
     public void showList(){
         Node aux = header;
         while(aux != null){
-            System.out.println(aux.value + " " + aux.value.length());
+            System.out.println(aux.product);
             aux = aux.sig;
         }
         
     }
 
-    public void addPeople(People people) {
-        listPeople.add(people);
+    public void addProduct(Product product) {
+        listProduct.addLast(product);
     }
 
-    public void showPeople() {
-        for (People p : listPeople) {
+    public void showProduct() {
+        for (Product p : listProduct) {
             System.out.println(p);
         }
     }
 
-    public void sortByName() {
-        listPeople.sort((p1, p2) -> p1.getName().compareToIgnoreCase(p2.getName()));
+    public void sortByDesgetDescription() {
+        listProduct.sort((p1, p2) -> p1.getDescription().compareToIgnoreCase(p2.getDescription()));
     }
 
-    public void sortByLastName() {
-        listPeople.sort((p1, p2) -> p1.getLastName().compareToIgnoreCase(p2.getLastName()));
+    public void sortByName() {
+        listProduct.sort((p1, p2) -> p1.getDescription().compareToIgnoreCase(p2.getDescription()));
     }
 
     
