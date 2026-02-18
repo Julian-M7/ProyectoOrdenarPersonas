@@ -66,7 +66,7 @@ public class ManagerList {
         }
     }
 
-    public void sortByDesgetDescription() {
+    public void sortByDescription() {
         listProduct.sort((p1, p2) -> p1.getDescription().compareToIgnoreCase(p2.getDescription()));
     }
 

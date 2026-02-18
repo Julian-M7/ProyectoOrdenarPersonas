@@ -1,14 +1,14 @@
 package co.edu.uptc.model;
 
 public class Node {
-    String value;
+    Product product;
     Node sig;
 
-    public Node(String value){
-        this.value = value;
+    public Node(Product product){
+        this.product = product;
     }
-    public void addInicio(String value){
-        Node aux = new Node(value);
+    public void addInicio(Product product){
+        Node aux = new Node(product);
         if(sig == null){
             sig = aux;
         }else{

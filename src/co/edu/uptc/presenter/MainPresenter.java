@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import co.edu.uptc.interfaces.ModelInterface;
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
-import co.edu.uptc.model.People;
+import co.edu.uptc.model.Product;
 
 public class MainPresenter implements PresenterInterface {
     private ViewInterface view;
@@ -27,43 +27,45 @@ public class MainPresenter implements PresenterInterface {
     }
 
     @Override
-    public void addPeople(String name, String lastName) {
+    public void addProduct(String description, String price, String unit) {
 
         try {
-            if (name == null || name.trim().isEmpty() || lastName == null || lastName.trim().isEmpty()) {
-                view.showError("El nombre y apellido no pueden estar vacíos.");
+            if (description == null || description.trim().isEmpty() || price == null || price.trim().isEmpty() || unit == null || unit.trim().isEmpty()) {
+                view.showError(" no pueden estar vacíos.");
                 return;
             }
             
-            model.addPeople(name, lastName);
-            view.showMessage("Persona agregada exitosamente: " + name + " " + lastName);
+            model.addProduct(description, price, unit);
+            view.showMessage("Producto agregada exitosamente: " + description + " " + price);
             
         } catch (Exception e) {
-            view.showError("Error al agregar persona: " + e.getMessage());
+            view.showError("Error al agregar el producto: " + e.getMessage());
         }
         /* 
-        ArrayList<People> listPeople = new ArrayList();
-        People people1 = new People();
-        people1.setName(name);
-        people1.setLastName(lastName);
-        listPeople.add(people1);
+        ArrayList<Product> listProduct = new ArrayList();
+        Product product1 = new Product();
+        product1.setdescription(description);
+        product1.setprice(price);
+        listProduct.add(product1);
 
         */
     }
 
         @Override
-    public void showPeople() {
+    public void showProduct() {
         try {
-            model.showPeople();
+            model.showProduct();
         } catch (Exception e) {
             view.showError(e.getMessage());
         }
     }
 
+    
+
     @Override
-    public void sortByName() {
+    public void sortByDescription() {
         try {
-            model.sortByName();
+            model.sortByDescription();
         } catch (Exception e) {
             view.showError(e.getMessage());
         }
@@ -72,9 +74,11 @@ public class MainPresenter implements PresenterInterface {
     @Override
     public void sortByLastName() {
         try {
-            model.sortByLastName();
+            model.sortByDescription();
         } catch (Exception e) {
             view.showError(e.getMessage());
         }
     }
+
+
 }

@@ -11,23 +11,24 @@ public class NumberSum implements ModelInterface {
     }
     
     @Override
-    public void addPeople(String name, String lastName) throws Exception {
-        People people = new People();
-        people.setName(name);
-        people.setLastName(lastName);
-        manager.addPeople(people);
+    public void addProduct(String description, String price, String unit) throws Exception {
+        Product product = new Product();
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setUnit(unit);
+        manager.addProduct(product);
     }
     @Override
-    public void showPeople() throws Exception {
-        manager.showPeople();
+    public void showProduct() throws Exception {
+        manager.showProduct();
     }
     @Override
     public void sortByName() throws Exception {
-         manager.sortByName();
+         manager.sortByDescription();
     }
     @Override
-    public void sortByLastName() throws Exception {
-         manager.sortByLastName();
+    public void sortByDescription() throws Exception {
+         manager.sortByDescription();
     }
 
 }

@@ -1,8 +1,8 @@
 package co.edu.uptc.interfaces;
 
 public interface ModelInterface {
-    void addPeople(String name, String lastName) throws Exception;
-    void showPeople() throws Exception;
+    void addProduct(String description, String price, String unit) throws Exception;
+    void showProduct() throws Exception;
+    void sortByDescription() throws Exception;
     void sortByName() throws Exception;
-    void sortByLastName() throws Exception;
 }

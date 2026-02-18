@@ -37,10 +37,10 @@ public class ConsoleView2 implements ViewInterface {
 
         while (isRunning) {
             System.out.println("\n--- MENÚ PRINCIPAL ---");
-            System.out.println("1. Añadir persona");
-            System.out.println("2. Mostrar personas");
-            System.out.println("3. Ordenar por nombre");
-            System.out.println("4. Ordenar por apellido");
+            System.out.println("1. Añadir producto");
+            System.out.println("2. Mostrar productos");
+            System.out.println("3. Ordenar por descripcion");
+            System.out.println("4. Ordenar por precio");
             System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             
@@ -51,10 +51,10 @@ public class ConsoleView2 implements ViewInterface {
                     readInfo();
                     break;
                 case "2":
-                    presenter.showPeople();
+                    presenter.showProduct();
                     break;
                 case "3":
-                    presenter.sortByName();
+                    presenter.sortByDescription();
                     break;
                 case "4":
                     presenter.sortByLastName();
@@ -70,13 +70,16 @@ public class ConsoleView2 implements ViewInterface {
     }
 
     private void readInfo() {
-        System.out.print("Ingrese el nombre: ");
+        System.out.print("Ingrese la descripcion: ");
         String n1 = scanner.nextLine();
 
-        System.out.print("Ingrese el apellido: ");
+        System.out.print("Ingrese el precio: ");
         String n2 = scanner.nextLine();
 
-        presenter.addPeople(n1, n2);
+        System.out.print("Ingrese las unidades: ");
+        String n3 = scanner.nextLine();
+
+        presenter.addProduct(n1, n2, n3);
     }
     /* 
     @Override
