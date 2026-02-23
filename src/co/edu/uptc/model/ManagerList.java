@@ -9,34 +9,34 @@ import java.util.LinkedList;
 public class ManagerList implements Collection {
     Node header = null;
     ArrayList<Product> listProduct = new ArrayList<>();
-    //Node product;
+    // Node product;
 
-    private Node createNode(Product product){
+    private Node createNode(Product product) {
         return new Node(product);
     }
 
-    private Node returnlastNode(){
+    private Node returnlastNode() {
         Node last = header;
-        while(last.sig != null){
+        while (last.sig != null) {
             last = last.sig;
         }
         return last;
     }
 
-    public void addInicio(Product product){
+    public void addInicio(Product product) {
         Node aux = new Node(product);
-        if(header == null){
+        if (header == null) {
             header = aux;
-        }else{
+        } else {
             aux.sig = header;
         }
     }
 
-    public void conectarNodoAlFinal(Product product){
+    public void conectarNodoAlFinal(Product product) {
         Node aux = new Node(product);
-        if(header == null){
+        if (header == null) {
             header = aux;
-        }else{
+        } else {
             Node last = returnlastNode();
             last.sig = aux;
         }
@@ -46,57 +46,56 @@ public class ManagerList implements Collection {
         header = null;
         for (Product p : listProduct) {
             Node aux = new Node(p);
-            if(header == null){
+            if (header == null) {
                 header = aux;
-            }else{
+            } else {
                 Node last = returnlastNode();
                 last.sig = aux;
             }
         }
     }
 
-    public void addEnd(Product product){
+    public void addEnd(Product product) {
         Node aux = new Node(product);
-        //conectarNodoAlFinal(product);
-        if(header == null){
+        // conectarNodoAlFinal(product);
+        if (header == null) {
             header = aux;
-        }else{
+        } else {
             Node last = returnlastNode();
             last.sig = aux;
         }
         listProduct.add(product);
     }
 
-    public void showList(){
+    public void showList() {
         Node aux = header;
-        while(aux != null){
+        while (aux != null) {
             System.out.println(aux.product);
             aux = aux.sig;
         }
     }
 
     public void addProduct(Product product) {
-        //listProduct.addLast(product);
+        // listProduct.addLast(product);
         addEnd(product);
     }
 
     public void showProduct() {
-        //for (Product p : listProduct) {
-          //  System.out.println(p);
-        //}
+        // for (Product p : listProduct) {
+        // System.out.println(p);
+        // }
         showList();
     }
 
     public void sortByDescription() {
-        //listProduct.sort((p1, p2) -> p1.getDescription().compareToIgnoreCase(p2.getDescription()));
-        Collections.sort(listProduct, (p1, p2) -> 
-            p1.getDescription().compareToIgnoreCase(p2.getDescription()));
+        // listProduct.sort((p1, p2) ->
+        // p1.getDescription().compareToIgnoreCase(p2.getDescription()));
+        Collections.sort(listProduct, (p1, p2) -> p1.getDescription().compareToIgnoreCase(p2.getDescription()));
         rebuildListFromArray();
     }
 
     public void sortByPrice() {
-        Collections.sort(listProduct, (p1, p2) -> 
-            p1.getPrice().compareToIgnoreCase(p2.getPrice()));
+        Collections.sort(listProduct, (p1, p2) -> p1.getPrice().compareToIgnoreCase(p2.getPrice()));
         rebuildListFromArray();
     }
 
@@ -139,10 +138,25 @@ public class ManagerList implements Collection {
         return false;
     }
 
+    public void removeProduct(String description) throws Exception {
+        boolean removed = listProduct.removeIf(p -> p.getDescription().equalsIgnoreCase(description));
+        if (!removed) {
+            throw new Exception("Producto con descripción '" + description + "' no encontrado.");
+        }
+        rebuildListFromArray(); // Reconstruir la lista enlazada después de eliminar
+    }
+
     @Override
     public boolean remove(Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        if (o instanceof String) {
+            try {
+                removeProduct((String) o);
+                return true;
+            } catch (Exception e) {
+                return false; // Si no se encuentra, retorna false
+            }
+        }
+        return false;
     }
 
     @Override
@@ -175,5 +189,4 @@ public class ManagerList implements Collection {
         throw new UnsupportedOperationException("Unimplemented method 'clear'");
     }
 
-    
 }

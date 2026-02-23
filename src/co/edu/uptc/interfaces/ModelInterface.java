@@ -5,4 +5,5 @@ public interface ModelInterface {
     void showProduct() throws Exception;
     void sortByDescription() throws Exception;
     void sortByName() throws Exception;
+    void removeProduct(String description) throws Exception;
 }

@@ -31,4 +31,12 @@ public class NumberSum implements ModelInterface {
          manager.sortByDescription();
     }
 
+    @Override
+    public void removeProduct(String description) throws Exception {
+        if (description == null || description.trim().isEmpty()) {
+        throw new Exception("La descripción no puede estar vacía.");
+    }
+    manager.removeProduct(description);
+    }
+
 }

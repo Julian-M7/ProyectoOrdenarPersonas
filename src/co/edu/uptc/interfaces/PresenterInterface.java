@@ -7,5 +7,5 @@ public interface PresenterInterface {
     void showProduct();
     void sortByDescription();
     void sortByLastName();
-
+    void removeProduct(String description);
 }

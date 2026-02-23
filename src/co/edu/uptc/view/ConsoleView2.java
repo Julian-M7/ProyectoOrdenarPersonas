@@ -1,10 +1,9 @@
 package co.edu.uptc.view;
+
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
 
 import java.util.Scanner;
-
-
 
 public class ConsoleView2 implements ViewInterface {
     private PresenterInterface presenter;
@@ -16,22 +15,18 @@ public class ConsoleView2 implements ViewInterface {
         this.isRunning = true;
     }
 
-
-
     @Override
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
     }
 
-    
     @Override
     public void showError(String message) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'showError'");
     }
 
-
-        @Override
+    @Override
     public void start() {
         System.out.println("===  SISTEMA DE GESTIÓN DE PERSONAS  ===");
 
@@ -41,9 +36,10 @@ public class ConsoleView2 implements ViewInterface {
             System.out.println("2. Mostrar productos");
             System.out.println("3. Ordenar por descripcion");
             System.out.println("4. Ordenar por precio");
-            System.out.println("5. Salir");
+            System.out.println("5. Eliminar producto");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
-            
+
             String option = scanner.nextLine();
 
             switch (option) {
@@ -60,6 +56,9 @@ public class ConsoleView2 implements ViewInterface {
                     presenter.sortByLastName();
                     break;
                 case "5":
+                    removeProduct();
+                    break;
+                case "6":
                     isRunning = false;
                     System.out.println("Saliendo");
                     break;
@@ -81,30 +80,36 @@ public class ConsoleView2 implements ViewInterface {
 
         presenter.addProduct(n1, n2, n3);
     }
-    /* 
-    @Override
-    public void start() {
-        System.out.println("===  SISTEMA  ===");
-
-        while (isRunning) {
-            System.out.println("\nEscriba 'salir' para finalizar o presione Enter para Continuar:");
-            String option = scanner.nextLine();
-
-            if (option.equalsIgnoreCase("salir")) {
-                isRunning = false;
-                System.out.println("Saliendo del programa...");
-            } else {
-                readInfo();
-            }
-        }
-    }
-*/
-    
+    /*
+     * @Override
+     * public void start() {
+     * System.out.println("===  SISTEMA  ===");
+     * 
+     * while (isRunning) {
+     * System.out.
+     * println("\nEscriba 'salir' para finalizar o presione Enter para Continuar:");
+     * String option = scanner.nextLine();
+     * 
+     * if (option.equalsIgnoreCase("salir")) {
+     * isRunning = false;
+     * System.out.println("Saliendo del programa...");
+     * } else {
+     * readInfo();
+     * }
+     * }
+     * }
+     */
 
     @Override
     public void showMessage(String message) {
         System.out.println("--------------------------------");
         System.out.println(message);
         System.out.println("--------------------------------");
+    }
+
+    private void removeProduct() {
+        System.out.print("Ingrese la descripción del producto a eliminar: ");
+        String description = scanner.nextLine();
+        presenter.removeProduct(description);
     }
 }
