@@ -2,14 +2,14 @@ package co.edu.uptc.model;
 
 public class Product {
     String description;
-    String price;
+    Double price;
     String unit;
 
 
     public Product() {
     }
 
-    public Product(String description, String price, String unit) {
+    public Product(String description, Double price, String unit) {
         this.description = description;
         this.price = price;
         this.unit = unit;
@@ -23,11 +23,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -44,7 +44,7 @@ public class Product {
         return this;
     }
 
-    public Product price(String price) {
+    public Product price(Double price) {
         setPrice(price);
         return this;
     }

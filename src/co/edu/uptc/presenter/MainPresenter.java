@@ -27,10 +27,10 @@ public class MainPresenter implements PresenterInterface {
     }
 
     @Override
-    public void addProduct(String description, String price, String unit) {
+    public void addProduct(String description, Double price, String unit) {
 
         try {
-            if (description == null || description.trim().isEmpty() || price == null || price.trim().isEmpty()
+            if (description == null || description.trim().isEmpty() || price == null
                     || unit == null || unit.trim().isEmpty()) {
                 view.showError(" no pueden estar vacíos.");
                 return;
@@ -38,7 +38,7 @@ public class MainPresenter implements PresenterInterface {
 
             model.addProduct(description, price, unit);
             view.showMessage(
-                    "Producto agregada exitosamente: " + description + " Precio: " + price + "Unidades" + unit);
+                    "Producto agregada exitosamente: " + description + " Precio:  "  + price + "  Unidades: " + unit);
 
         } catch (Exception e) {
             view.showError("Error al agregar el producto: " + e.getMessage());
@@ -58,7 +58,7 @@ public class MainPresenter implements PresenterInterface {
         try {
             model.showProduct();
         } catch (Exception e) {
-            view.showError(e.getMessage());
+            view.showError( "No hay productos" + e.getMessage());
         }
     }
 
@@ -66,8 +66,9 @@ public class MainPresenter implements PresenterInterface {
     public void sortByDescription() {
         try {
             model.sortByDescription();
+            view.showMessage("Productos ordenados satifactoriamente");
         } catch (Exception e) {
-            view.showError(e.getMessage());
+            view.showError("No hay productos para ordenar" + e.getMessage());
         }
     }
 

@@ -71,14 +71,24 @@ public class ConsoleView2 implements ViewInterface {
     private void readInfo() {
         System.out.print("Ingrese la descripcion: ");
         String n1 = scanner.nextLine();
-
-        System.out.print("Ingrese el precio: ");
-        String n2 = scanner.nextLine();
+        String n2 = "";
+        boolean priceValid = false;
+        while (!priceValid) {
+            System.out.print("Ingrese el precio: ");
+            n2 = scanner.nextLine();
+            try {
+                Double price = Double.parseDouble(n2);
+                priceValid = true;
+            } catch (NumberFormatException e) {
+                //preguntar
+                System.out.println("El precio debe ser un número válido (ejemplo: 123.45). Intente de nuevo.");
+            }
+        }
 
         System.out.print("Ingrese las unidades: ");
         String n3 = scanner.nextLine();
 
-        presenter.addProduct(n1, n2, n3);
+        presenter.addProduct(n1, Double.parseDouble(n2), n3);
     }
     /*
      * @Override

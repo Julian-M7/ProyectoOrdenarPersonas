@@ -11,7 +11,7 @@ public class NumberSum implements ModelInterface {
     }
     
     @Override
-    public void addProduct(String description, String price, String unit) throws Exception {
+    public void addProduct(String description, Double price, String unit) throws Exception {
         Product product = new Product();
         product.setDescription(description);
         product.setPrice(price);

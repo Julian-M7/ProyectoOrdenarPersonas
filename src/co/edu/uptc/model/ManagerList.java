@@ -95,7 +95,7 @@ public class ManagerList implements Collection {
     }
 
     public void sortByPrice() {
-        Collections.sort(listProduct, (p1, p2) -> p1.getPrice().compareToIgnoreCase(p2.getPrice()));
+        Collections.sort(listProduct, (p1, p2) -> p1.getPrice().compareTo(p2.getPrice()));
         rebuildListFromArray();
     }
 
@@ -153,7 +153,7 @@ public class ManagerList implements Collection {
                 removeProduct((String) o);
                 return true;
             } catch (Exception e) {
-                return false; // Si no se encuentra, retorna false
+                return false; 
             }
         }
         return false;
